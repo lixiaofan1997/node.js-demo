@@ -1,0 +1,137 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', 'wangding', '-g' ]
+2 info using npm@3.10.10
+3 info using node@v6.10.1
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readGlobalPackageData
+7 silly fetchPackageMetaData wangding
+8 silly fetchNamedPackageData wangding
+9 silly mapToRegistry name wangding
+10 silly mapToRegistry using default registry
+11 silly mapToRegistry registry https://registry.npmjs.org/
+12 silly mapToRegistry data Result {
+12 silly mapToRegistry   raw: 'wangding',
+12 silly mapToRegistry   scope: null,
+12 silly mapToRegistry   escapedName: 'wangding',
+12 silly mapToRegistry   name: 'wangding',
+12 silly mapToRegistry   rawSpec: '',
+12 silly mapToRegistry   spec: 'latest',
+12 silly mapToRegistry   type: 'tag' }
+13 silly mapToRegistry uri https://registry.npmjs.org/wangding
+14 verbose request uri https://registry.npmjs.org/wangding
+15 verbose request no auth needed
+16 info attempt registry request try #1 at 17:15:18
+17 verbose request id 894ad5edd06adda3
+18 verbose etag W/"f6d8033e08079d2e9e1c6b685d3341b7"
+19 verbose lastModified Sun, 27 May 2018 21:30:54 GMT
+20 http request GET https://registry.npmjs.org/wangding
+21 http 304 https://registry.npmjs.org/wangding
+22 verbose headers { date: 'Tue, 25 Sep 2018 09:15:18 GMT',
+22 verbose headers   connection: 'keep-alive',
+22 verbose headers   'set-cookie': [ '__cfduid=d037867e6dac8accd413f87ae696403be1537866918; expires=Wed, 25-Sep-19 09:15:18 GMT; path=/; domain=.registry.npmjs.org; HttpOnly' ],
+22 verbose headers   'cf-cache-status': 'HIT',
+22 verbose headers   'cache-control': 'max-age=300',
+22 verbose headers   'cf-ray': '45fc62b309d3b230-HKG',
+22 verbose headers   etag: '"f6d8033e08079d2e9e1c6b685d3341b7"',
+22 verbose headers   'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+22 verbose headers   'last-modified': 'Sun, 27 May 2018 21:30:54 GMT',
+22 verbose headers   vary: 'accept-encoding, accept',
+22 verbose headers   server: 'cloudflare' }
+23 silly get cb [ 304,
+23 silly get   { date: 'Tue, 25 Sep 2018 09:15:18 GMT',
+23 silly get     connection: 'keep-alive',
+23 silly get     'set-cookie': [ '__cfduid=d037867e6dac8accd413f87ae696403be1537866918; expires=Wed, 25-Sep-19 09:15:18 GMT; path=/; domain=.registry.npmjs.org; HttpOnly' ],
+23 silly get     'cf-cache-status': 'HIT',
+23 silly get     'cache-control': 'max-age=300',
+23 silly get     'cf-ray': '45fc62b309d3b230-HKG',
+23 silly get     etag: '"f6d8033e08079d2e9e1c6b685d3341b7"',
+23 silly get     'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+23 silly get     'last-modified': 'Sun, 27 May 2018 21:30:54 GMT',
+23 silly get     vary: 'accept-encoding, accept',
+23 silly get     server: 'cloudflare' } ]
+24 verbose etag https://registry.npmjs.org/wangding from cache
+25 verbose get saving wangding to /home/wangding/.npm/registry.npmjs.org/wangding/.cache.json
+26 verbose correctMkdir /home/wangding/.npm correctMkdir not in flight; initializing
+27 silly install normalizeTree
+28 silly loadCurrentTree Finishing
+29 silly loadIdealTree Starting
+30 silly install loadIdealTree
+31 silly cloneCurrentTree Starting
+32 silly install cloneCurrentTreeToIdealTree
+33 silly cloneCurrentTree Finishing
+34 silly loadShrinkwrap Starting
+35 silly install loadShrinkwrap
+36 silly loadShrinkwrap Finishing
+37 silly loadAllDepsIntoIdealTree Starting
+38 silly install loadAllDepsIntoIdealTree
+39 silly resolveWithNewModule wangding@1.0.6 checking installable status
+40 silly cache add args [ 'wangding', null ]
+41 verbose cache add spec wangding
+42 silly cache add parsed spec Result {
+42 silly cache add   raw: 'wangding',
+42 silly cache add   scope: null,
+42 silly cache add   escapedName: 'wangding',
+42 silly cache add   name: 'wangding',
+42 silly cache add   rawSpec: '',
+42 silly cache add   spec: 'latest',
+42 silly cache add   type: 'tag' }
+43 silly addNamed wangding@latest
+44 verbose addNamed "latest" is being treated as a dist-tag for wangding
+45 info addNameTag [ 'wangding', 'latest' ]
+46 silly mapToRegistry name wangding
+47 silly mapToRegistry using default registry
+48 silly mapToRegistry registry https://registry.npmjs.org/
+49 silly mapToRegistry data Result {
+49 silly mapToRegistry   raw: 'wangding',
+49 silly mapToRegistry   scope: null,
+49 silly mapToRegistry   escapedName: 'wangding',
+49 silly mapToRegistry   name: 'wangding',
+49 silly mapToRegistry   rawSpec: '',
+49 silly mapToRegistry   spec: 'latest',
+49 silly mapToRegistry   type: 'tag' }
+50 silly mapToRegistry uri https://registry.npmjs.org/wangding
+51 verbose addNameTag registry:https://registry.npmjs.org/wangding not in flight; fetching
+52 verbose get https://registry.npmjs.org/wangding not expired, no request
+53 silly addNameTag next cb for wangding with tag latest
+54 silly addNamed wangding@1.0.6
+55 verbose addNamed "1.0.6" is a plain semver version for wangding
+56 silly cache afterAdd wangding@1.0.6
+57 verbose afterAdd /home/wangding/.npm/wangding/1.0.6/package/package.json not in flight; writing
+58 verbose correctMkdir /home/wangding/.npm correctMkdir not in flight; initializing
+59 verbose afterAdd /home/wangding/.npm/wangding/1.0.6/package/package.json written
+60 silly loadAllDepsIntoIdealTree Finishing
+61 silly loadIdealTree Finishing
+62 silly currentTree lib
+62 silly currentTree └── wangding@1.0.6
+63 silly idealTree lib
+63 silly idealTree └── wangding@1.0.6
+64 silly generateActionsToTake Starting
+65 silly install generateActionsToTake
+66 warn checkPermissions Missing write access to /usr/lib/node_modules/wangding
+67 warn checkPermissions Missing write access to /usr/lib/node_modules
+68 silly rollbackFailedOptional Starting
+69 silly rollbackFailedOptional Finishing
+70 silly runTopLevelLifecycles Finishing
+71 silly install printInstalled
+72 verbose stack Error: EACCES: permission denied, access '/usr/lib/node_modules/wangding'
+72 verbose stack     at Error (native)
+73 verbose cwd /home/wangding/node.js-demo/07-module
+74 error Linux 3.10.0-514.el7.x86_64
+75 error argv "/usr/bin/node" "/usr/bin/npm" "install" "wangding" "-g"
+76 error node v6.10.1
+77 error npm  v3.10.10
+78 error path /usr/lib/node_modules/wangding
+79 error code EACCES
+80 error errno -13
+81 error syscall access
+82 error Error: EACCES: permission denied, access '/usr/lib/node_modules/wangding'
+82 error     at Error (native)
+82 error  { Error: EACCES: permission denied, access '/usr/lib/node_modules/wangding'
+82 error     at Error (native)
+82 error   errno: -13,
+82 error   code: 'EACCES',
+82 error   syscall: 'access',
+82 error   path: '/usr/lib/node_modules/wangding' }
+83 error Please try running this command again as root/Administrator.
+84 verbose exit [ -13, true ]
