@@ -1,15 +1,20 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8" />
+      <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>商品分组</title>
+    <title></title>
 	<!-- Bootstrap Styles-->
     <link href="/css/bootstrap.css" rel="stylesheet" />
      <!-- FontAwesome Styles-->
     <link href="/css/font-awesome.css" rel="stylesheet" />
+     <!-- Morris Chart Styles-->
+   
         <!-- Custom Styles-->
     <link href="/css/custom-styles.css" rel="stylesheet" />
+     <!-- TABLE STYLES-->
+    <link href="/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/layui/css/modules/layer/default/layer.css">
 </head>
 <body>
     <div id="wrapper">
@@ -235,51 +240,51 @@
         </nav>
         <!--/. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
-            <div id="sideNav" href=""><i class="fa fa-caret-right"></i></div>
-                <div class="sidebar-collapse">
-                    <ul class="nav" id="main-menu">
-                        <li>
-                            <a href="/index1"><i class="fa fa-dashboard"></i> 图表</a>
-                        </li>
-                        <li>
-                            <a href="/user"><i class="fa fa-desktop"></i> 用户管理</a>
-                        </li>
-                        <li>
-                            <a href="/aticle"><i class="fa fa-bar-chart-o"></i>文章管理</a>
-                        </li>
-                        <li>
-                            <a href="/idea"><i class="fa fa-qrcode"></i> 意见反馈</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/message"><i class="fa fa-table"></i>消息管理</a>
-                        </li>
-                        <li>
-                            <a href="/lost"><i class="fa fa-edit"></i> 失物招领 </a>
-                        </li>
-    
-    
-                        <li>
-                            <a href="#"><i class="fa fa-sitemap"></i> 商品管理<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="/goods">商品信息</a>
-                                </li>
-                                <li>
-                                    <a href="/goods-type" class="active-menu">商品分组</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="/part-time"><i class="fa fa-fw fa-file"></i> 兼职招聘</a>
-                        </li>
-                        <li>
-                            <a href="/express"><i class="fa fa-fw fa-file"></i> 代取快递</a>
-                        </li>
-                    </ul>
-    
-                </div>
-    
+		<div id="sideNav" href=""><i class="fa fa-caret-right"></i></div>
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li>
+                        <a href="/index1"><i class="fa fa-dashboard"></i> 图表</a>
+                    </li>
+                    <li>
+                        <a href="/user"><i class="fa fa-desktop"></i> 用户管理</a>
+                    </li>
+					<li>
+                        <a href="/aticle"><i class="fa fa-bar-chart-o"></i>文章管理</a>
+                    </li>
+                    <li>
+                        <a href="/idea"><i class="fa fa-qrcode"></i> 意见反馈</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/message"><i class="fa fa-table"></i>消息管理</a>
+                    </li>
+                    <li>
+                        <a href="/lost"><i class="fa fa-edit"></i> 失物招领 </a>
+                    </li>
+
+
+                    <li>
+                        <a href="#"><i class="fa fa-sitemap"></i> 商品管理<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/goods">商品信息</a>
+                            </li>
+                            <li>
+                                <a href="/goods-type" class="active-menu">商品分组</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/part-time"><i class="fa fa-fw fa-file"></i> 兼职招聘</a>
+                    </li>
+                    <li>
+                        <a href="/express"><i class="fa fa-fw fa-file"></i> 代取快递</a>
+                    </li>
+                </ul>
+
+            </div>
+
         </nav>
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
@@ -287,14 +292,55 @@
 			 <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                            Empty Page <small>Create new page.</small>
+                            <small>商品分组管理</small>
                         </h1>
                     </div>
-            </div> 
-             <!-- /. PAGE INNER  -->
+                </div> 
+                 <!-- /. ROW  -->
+               
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- 商品分组表 -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            商品分组表
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>分组名称</th>
+                                            <th>商品数</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       <% for(var item in items){ %>
+                                            <tr class="odd gradeX" id="<%= items[item].id %>">
+                                                <td><%= items[item].goods_name %></td>  
+                                                <td><%= items[item].good_num %></td>  
+                                                <td>
+                                                    <button onclick="del('<%= items[item].id %>')">删除</button>
+                                                    <button>修改</button>
+                                                </td>
+                                            </tr>
+                                        <% } %>
+                                    </tbody>
+                                </table>
+                                <button class="btn btn-default" style="float:right;margin-top:10px;" id="insert"><i class="fa fa-edit "></i> 增加</button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!--End Advanced Tables -->
+                </div>
             </div>
-         <!-- /. PAGE WRAPPER  -->
         </div>
+        </div>
+             <!-- /. PAGE INNER  -->
+    </div>
+         <!-- /. PAGE WRAPPER  -->
      <!-- /. WRAPPER  -->
     <!-- JS Scripts-->
     <!-- jQuery Js -->
@@ -303,10 +349,40 @@
     <script src="/js/bootstrap.min.js"></script>
     <!-- Metis Menu Js -->
     <script src="/js/jquery.metisMenu.js"></script>
-      <!-- Custom Js -->
+     <!-- DATA TABLE SCRIPTS -->
+    <script src="/js/dataTables/jquery.dataTables.js"></script>
+    <script src="/js/dataTables/dataTables.bootstrap.js"></script>
+    <script src="/layui/lay/modules/layer.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dataTables-example').dataTable();
+        });
+        function del(id){
+            fetch('http://192.168.179.144:3000/user', {
+            method: 'delete',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body:'item=' + id
+            });
+            showData(id);
+        }
+        function showData(na){
+            var tr = document.getElementById(na);
+            tr.parentNode.removeChild(tr);
+        }
+        $('#insert').on('click', function(){
+                layer.open({
+                type: 2,
+                title: '添加商品分组',
+                maxmin: true,
+                shadeClose: true, //点击遮罩关闭层
+                area : ['800px' , '520px'],
+                content: 'user-add'
+            });
+        });
+    </script>
+         <!-- Custom Js -->
     <script src="/js/custom-scripts.js"></script>
     
    
 </body>
 </html>
-

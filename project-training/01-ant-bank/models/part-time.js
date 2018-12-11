@@ -4,21 +4,21 @@ var user = function(){};
 
 /*查*/
 user.prototype.getAll = function(cb){
-  const sql = 'SELECT * from users';
+  const sql = 'SELECT * from partime_job';
   var items = [];
   db.query(sql,function(err,result){
     if(err){
       cb(true);
       return;                
     }
-    result.forEach((e) => {items.push(e.id,e.username,e.studentId,e.school,e.telNum,e.password,e.avatar,e.issue,e.goods,e.part_time);});
+    result.forEach((e) => {items.push(username,part_id,part_date,part_name,e.part_price,e.part_worktime,e.part_addr,e.part_content);});
     cb(false,result);
   });
 };
 
 /*增*/
 user.prototype.addItem = function(id,username,cb){
-  const sql = 'INSERT INTO users(id,username) VALUES(?,?)';
+  const sql = 'INSERT INTO partime_job(id,username) VALUES(?,?)';
   db.query(sql,[id,username],function(err,result){
     if(err){
       cb(true);
@@ -30,7 +30,7 @@ user.prototype.addItem = function(id,username,cb){
 
 /*删*/
 user.prototype.delItem = function(username,cb){
-  const sql = 'DELETE FROM users WHERE username=?';
+  const sql = 'DELETE FROM partime_job WHERE username=?';
   db.query(sql,[username],function(err,result){
     if(err){
       cb(true);
@@ -41,7 +41,7 @@ user.prototype.delItem = function(username,cb){
 };
 
 user.prototype.delAll = function(cb){
-  const sql = 'DELETE FROM users';
+  const sql = 'DELETE FROM partime_job';
   db.query(sql,function(err,results){
     if(err){
       cb(true);
@@ -53,7 +53,7 @@ user.prototype.delAll = function(cb){
 
 /*改*/
 user.prototype.update = function(id,username,cb){
-  const sql = 'UPDATE users SET username = ? WHERE id = ?';
+  const sql = 'UPDATE partime_job SET username = ? WHERE id = ?';
   db.query(sql,[username,id],function(err,results){
     if(err){
       cb(true);
