@@ -29,9 +29,9 @@ user.prototype.addItem = function(id,username,cb){
 };
 
 /*删*/
-user.prototype.delItem = function(username,cb){
-  const sql = 'DELETE FROM groups WHERE username=?';
-  db.query(sql,[username],function(err,result){
+user.prototype.delItem = function(goods_type,cb){
+  const sql = 'DELETE FROM groups WHERE goods_type=?';
+  db.query(sql,[goods_type],function(err,result){
     if(err){
       cb(true);
       return;

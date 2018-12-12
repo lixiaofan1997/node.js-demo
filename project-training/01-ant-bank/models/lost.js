@@ -11,7 +11,7 @@ user.prototype.getAll = function(cb){
       cb(true);
       return;                
     }
-    result.forEach((e) => {items.push(username,item_id,item_time,item_name,item_type,item_addr,item_date,item_content,item_pic,item_number );});
+    result.forEach((e) => {items.push(e.username,e.item_id,e.item_time,e.item_name,e.item_type,e.item_addr,e.item_date,e.item_content,e.item_pic,e.item_number );});
     cb(false,result);
   });
 };
@@ -29,9 +29,9 @@ user.prototype.addItem = function(id,username,cb){
 };
 
 /*删*/
-user.prototype.delItem = function(username,cb){
-  const sql = 'DELETE FROM found WHERE username=?';
-  db.query(sql,[username],function(err,result){
+user.prototype.delItem = function(item_id,cb){
+  const sql = 'DELETE FROM found WHERE item_id=?';
+  db.query(sql,[item_id],function(err,result){
     if(err){
       cb(true);
       return;

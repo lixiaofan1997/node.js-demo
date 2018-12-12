@@ -325,9 +325,9 @@
                                     </thead>
                                     <tbody>
                                        <% for(var item in items){ %>
-                                            <tr class="odd gradeX" id="<%= items[item].id %>">
+                                            <tr class="odd gradeX" id="<%= items[item].item_id %>">
                                                 <td><%= items[item].username %></td>  
-                                                <td><%= items[item].item_Id %></td>  
+                                                <td><%= items[item].item_id %></td>  
                                                 <td><%= items[item].item_time %></td>  
                                                 <td><%= items[item].item_name %></td>  
                                                 <td><%= items[item].item_type %></td>  
@@ -337,7 +337,7 @@
                                                 <td><%= items[item].item_pic %></td>                                                      
                                                 <td><%= items[item].item_number %></td>                                                      
                                                 <td>
-                                                    <button onclick="del('<%= items[item].id %>')">删除</button>
+                                                    <button onclick="del('<%= items[item].item_id %>')">删除</button>
                                                     <button>修改</button>
                                                 </td>
                                             </tr>
@@ -374,7 +374,7 @@
             $('#dataTables-example').dataTable();
         });
         function del(id){
-            fetch('http://192.168.179.144:3000/user', {
+            fetch('http://192.168.179.144:3000/lost', {
             method: 'delete',
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
             body:'item=' + id

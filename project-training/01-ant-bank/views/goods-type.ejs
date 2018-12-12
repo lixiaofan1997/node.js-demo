@@ -317,11 +317,11 @@
                                     </thead>
                                     <tbody>
                                        <% for(var item in items){ %>
-                                            <tr class="odd gradeX" id="<%= items[item].id %>">
-                                                <td><%= items[item].goods_name %></td>  
+                                            <tr class="odd gradeX" id="<%= items[item].goods_type %>">
+                                                <td><%= items[item].goods_type %></td>  
                                                 <td><%= items[item].good_num %></td>  
                                                 <td>
-                                                    <button onclick="del('<%= items[item].id %>')">删除</button>
+                                                    <button onclick="del('<%= items[item].goods_type %>')">删除</button>
                                                     <button>修改</button>
                                                 </td>
                                             </tr>
@@ -358,7 +358,7 @@
             $('#dataTables-example').dataTable();
         });
         function del(id){
-            fetch('http://192.168.179.144:3000/user', {
+            fetch('http://192.168.179.144:3000/goods-type', {
             method: 'delete',
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
             body:'item=' + id

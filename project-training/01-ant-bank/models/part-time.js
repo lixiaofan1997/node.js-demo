@@ -11,7 +11,7 @@ user.prototype.getAll = function(cb){
       cb(true);
       return;                
     }
-    result.forEach((e) => {items.push(username,part_id,part_date,part_name,e.part_price,e.part_worktime,e.part_addr,e.part_content);});
+    result.forEach((e) => {items.push(e.username,e.part_id,e.part_date,e.part_name,e.part_price,e.part_worktime,e.part_addr,e.part_content);});
     cb(false,result);
   });
 };
@@ -29,9 +29,9 @@ user.prototype.addItem = function(id,username,cb){
 };
 
 /*删*/
-user.prototype.delItem = function(username,cb){
-  const sql = 'DELETE FROM partime_job WHERE username=?';
-  db.query(sql,[username],function(err,result){
+user.prototype.delItem = function(part_id,cb){
+  const sql = 'DELETE FROM partime_job WHERE part_id=?';
+  db.query(sql,[part_id],function(err,result){
     if(err){
       cb(true);
       return;

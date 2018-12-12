@@ -29,9 +29,9 @@ user.prototype.addItem = function(id,username,cb){
 };
 
 /*删*/
-user.prototype.delItem = function(username,cb){
-  const sql = 'DELETE FROM issues WHERE username=?';
-  db.query(sql,[username],function(err,result){
+user.prototype.delItem = function(issue_id,cb){
+  const sql = 'DELETE FROM issues WHERE issue_id=?';
+  db.query(sql,[issue_id],function(err,result){
     if(err){
       cb(true);
       return;
