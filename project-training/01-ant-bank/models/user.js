@@ -11,15 +11,15 @@ user.prototype.getAll = function(cb){
       cb(true);
       return;                
     }
-    result.forEach((e) => {items.push(e.id,e.username,e.studentId,e.school,e.telNum,e.password,e.avatar,e.issue,e.goods,e.part_time);});
+    result.forEach((e) => {items.push(e.id,e.username,e.studentId,e.school,e.telNum,e.password,e.avatar,e.issue,e.goods,e.part_time,e.identity);});
     cb(false,result);
   });
 };
 
 /*增*/
 user.prototype.addItem = function(e,cb){
-  const sql = 'INSERT INTO users VALUES(?,?,?,?,?,?,?,?,?,?)';
-  db.query(sql,[e.id,e.username,e.studentId,e.school,e.telNum,e.password,e.avatar,e.issue,e.goods,e.part_time],function(err,result){
+  const sql = 'INSERT INTO users VALUES(?,?,?,?,?,?,?,?,?,?,?)';
+  db.query(sql,[e.id,e.username,e.studentId,e.school,e.telNum,e.password,e.avatar,e.issue,e.goods,e.part_time,e.identity],function(err,result){
     if(err){
       cb(true);
       return;

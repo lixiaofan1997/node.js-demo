@@ -16,8 +16,6 @@ var goodstypeRouter = require('./routes/goods-type');
 var parttimeRouter = require('./routes/part-time');
 var exp = require('./routes/express');
 var useradd = require('./routes/user-add');
-var userbRouter = require('./routes/ant/user.js');
-var issueRouter = require('./routes/ant/issue.js');
 
 var app = express();
 
@@ -43,8 +41,6 @@ app.use('/goods-type',goodstypeRouter);
 app.use('/part-time',parttimeRouter);
 app.use('/express',exp);
 app.use('/user-add',useradd);
-app.use('/before/user',userbRouter);
-app.use('/before/issue',issueRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
