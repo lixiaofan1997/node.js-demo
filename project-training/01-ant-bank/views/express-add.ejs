@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>添加代取快递</title>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/layui/css/modules/layer/default/layer.css">
+</head>
+<body>
+    <div class="container">
+        <form role="form" id="form_all">
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <input type="text" class="form-control" id="username" placeholder="用户名">
+            </div>
+            <div class="form-group">
+                <label for="take_id">代取id</label>
+                <input type="text" class="form-control" id="take_id" placeholder="代取id">
+            </div>
+            <div class="form-group">
+                <label for="take_time">代取发帖时间</label>
+                <input type="text" class="form-control" id="take_time" placeholder="date类型">
+            </div>
+            <div class="form-group">
+                <label for="take_name">代取发帖名称</label>
+                <input type="text" class="form-control" id="take_name" placeholder="发帖名称">
+            </div>
+            <div class="form-group">
+                <label for="take_place">代取地点</label>
+                <input type="text" class="form-control" id="take_place" placeholder="代取地点">
+            </div>
+            <div class="form-group">
+                <label for="take_content">详细描述</label>
+                <input type="text" class="form-control" id="take_content">
+            </div>
+            <input type="submit" value="确定" id="insert">
+            <input type="submit" value="取消" id="cancle">
+        </form>
+    </div>
+</body>
+<script src="/js/jquery-1.10.2.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Js -->
+<script src="/js/jquery.metisMenu.js"></script>
+ <!-- DATA TABLE SCRIPTS -->
+<script src="/js/dataTables/jquery.dataTables.js"></script>
+<script src="/js/dataTables/dataTables.bootstrap.js"></script>
+<script src="/layui/lay/modules/layer.js"></script>
+<script>
+    //确定提交数据
+    $('#insert').click(function(){
+            var username = $('#username').val();
+            var take_id = $('#take_id').val();
+            var take_time = $('#take_time').val();
+            var take_name = $('#take_name').val();
+            var take_place = $('#take_place').val();
+            var take_content = $('#take_content').val();
+            var obj = {
+                username:username,
+                take_id:take_id,
+                take_time:take_time, 
+                take_name:take_name,
+                take_place:take_place,   
+                take_content:take_content,  
+            }
+            var obj1 = JSON.stringify(obj);
+            fetch('http://192.168.179.144:3000/express', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                body:'item=' + obj1
+            });
+            var index = parent.layer.index; //获取当前弹层的索引号
+            parent.layer.close(index);
+            layer.msg('添加成功');
+        });
+    //取消清空表单
+    $('#cancle').click(function(){
+        $(':input','#form_all') 
+        .not(':button, :submit, :reset, :hidden') 
+        .val('') 
+        .removeAttr('checked') 
+        .removeAttr('selected');
+    })
+    
+</script>
+</html>

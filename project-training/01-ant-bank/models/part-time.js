@@ -17,9 +17,9 @@ user.prototype.getAll = function(cb){
 };
 
 /*增*/
-user.prototype.addItem = function(id,username,cb){
-  const sql = 'INSERT INTO partime_job(id,username) VALUES(?,?)';
-  db.query(sql,[id,username],function(err,result){
+user.prototype.addItem = function(e,cb){
+  const sql = 'INSERT INTO partime_job VALUES(?,?,?,?,?,?,?,?)';
+  db.query(sql,[e.username,e.part_id,e.part_date,e.part_name,e.part_price,e.part_worktime,e.part_addr,e.part_content],function(err,result){
     if(err){
       cb(true);
       return;

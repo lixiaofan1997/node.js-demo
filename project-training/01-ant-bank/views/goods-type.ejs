@@ -369,14 +369,25 @@
             var tr = document.getElementById(na);
             tr.parentNode.removeChild(tr);
         }
+        function change(){
+            layer.open({
+                    type: 2,
+                    title: '添加商品类型',
+                    maxmin: true,
+                    shadeClose: true, //点击遮罩关闭层
+                    area : ['800px' , '520px'],
+                    content: 'goods-type-add'
+            });
+        }
+        //添加商品类型
         $('#insert').on('click', function(){
                 layer.open({
-                type: 2,
-                title: '添加商品分组',
-                maxmin: true,
-                shadeClose: true, //点击遮罩关闭层
-                area : ['800px' , '520px'],
-                content: 'user-add'
+                    type: 2,
+                    title: '添加商品类型',
+                    maxmin: true,
+                    shadeClose: true, //点击遮罩关闭层
+                    area : ['800px' , '520px'],
+                    content: 'goods-type-add'
             });
         });
     </script>

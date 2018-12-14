@@ -1,4 +1,4 @@
-const Users = require('../models/part-time.js');
+const Users = require('../models/lost-add.js');
 var express = require('express');
 var router = express.Router();
 
@@ -11,23 +11,24 @@ router.get('/',function(req, res/*, next*/) {
       console.error(err);
       return;
     }
-    res.render('part-time',{items:result});
+    res.render('lost-add',{items:result});
   }); 
 });
 
 router.post('/',function(req,res){
-  res.header('Access-Control-Allow-Origin','*');
-  //console.log(req.body);
-  if(req.body !== '') {
-    user.addItem(JSON.parse(req.body.item), (err) => {
-      //console.log(req.body.item);
-      if(err) {
-        res.status(500).send('DB error!');
-      }else {
-        res.status(200).send('OK!');
-      }       
-    });
-  }
+  user.addItem(req.body.item,function(err){
+    if(err){
+      res.status(500).send('DB error');
+      return;
+    }
+  });
+  user.getAll(function(err,items){
+    if(err){
+      res.status(500).send('DB error');
+      return;
+    }
+    res.render('lost-add',{items:items});
+  });
 });
 
 router.delete('/',function(req,res){
@@ -53,18 +54,5 @@ router.delete('/',function(req,res){
   }
 });
 
-router.put('/',function(req,res){
-  if(typeof req.query.id === 'undefined'){
-    res.status(404).send('Not found!');
-  }else{
-    user.update(Number(req.query.id),req.body.item,function(err){
-      if(err){
-        res.status(500).send('DB error');
-      }else{
-        res.status(200).send('update Ok');
-      }
-    });
-  }
-});
 
 module.exports = router;

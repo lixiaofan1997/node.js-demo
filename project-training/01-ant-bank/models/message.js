@@ -17,9 +17,9 @@ user.prototype.getAll = function(cb){
 };
 
 /*增*/
-user.prototype.addItem = function(id,username,cb){
-  const sql = 'INSERT INTO chat(id,username) VALUES(?,?)';
-  db.query(sql,[id,username],function(err,result){
+user.prototype.addItem = function(e,cb){
+  const sql = 'INSERT INTO chat VALUES(?,?,?)';
+  db.query(sql,[e.username,e.chatting,e.content],function(err,result){
     if(err){
       cb(true);
       return;

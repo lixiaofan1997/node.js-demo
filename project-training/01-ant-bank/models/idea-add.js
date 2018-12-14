@@ -4,22 +4,22 @@ var user = function(){};
 
 /*查*/
 user.prototype.getAll = function(cb){
-  const sql = 'SELECT * from commodity';
+  const sql = 'SELECT * from feedback';
   var items = [];
   db.query(sql,function(err,result){
     if(err){
       cb(true);
       return;                
     }
-    result.forEach((e) => {items.push(e.goods_id,e.goods_name,e.goods_price,e.goods_type,e.username,e.goods_addr, e.goods_description,e.goods_date,e.goods_pic);});
+    result.forEach((e) => {items.push(e.username,e.feed_id,e.feed_type,e.feed_content);});
     cb(false,result);
   });
 };
 
 /*增*/
 user.prototype.addItem = function(e,cb){
-  const sql = 'INSERT INTO commodity VALUES(?,?,?,?,?,?,?,?,?)';
-  db.query(sql,[e.goods_id,e.goods_name,e.goods_price,e.goods_type,e.username,e.goods_addr, e.goods_description,e.goods_date,e.goods_pic],function(err,result){
+  const sql = 'INSERT INTO feedback VALUES(?,?,?,?)';
+  db.query(sql,[e.username,e.feed_id,e.feed_type,e.feed_content],function(err,result){
     if(err){
       cb(true);
       return;
@@ -29,9 +29,9 @@ user.prototype.addItem = function(e,cb){
 };
 
 /*删*/
-user.prototype.delItem = function(goods_id,cb){
-  const sql = 'DELETE FROM commodity WHERE goods_id=?';
-  db.query(sql,[goods_id],function(err,result){
+user.prototype.delItem = function(feed_id,cb){
+  const sql = 'DELETE FROM feedback WHERE feed_id=?';
+  db.query(sql,[feed_id],function(err,result){
     if(err){
       cb(true);
       return;
@@ -41,7 +41,7 @@ user.prototype.delItem = function(goods_id,cb){
 };
 
 user.prototype.delAll = function(cb){
-  const sql = 'DELETE FROM commodity';
+  const sql = 'DELETE FROM feedback';
   db.query(sql,function(err,results){
     if(err){
       cb(true);
@@ -53,7 +53,7 @@ user.prototype.delAll = function(cb){
 
 /*改*/
 user.prototype.update = function(id,username,cb){
-  const sql = 'UPDATE commodity SET username = ? WHERE id = ?';
+  const sql = 'UPDATE feedback SET username = ? WHERE id = ?';
   db.query(sql,[username,id],function(err,results){
     if(err){
       cb(true);

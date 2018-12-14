@@ -17,9 +17,9 @@ user.prototype.getAll = function(cb){
 };
 
 /*增*/
-user.prototype.addItem = function(id,username,cb){
-  const sql = 'INSERT INTO feedback(id,username) VALUES(?,?)';
-  db.query(sql,[id,username],function(err,result){
+user.prototype.addItem = function(e,cb){
+  const sql = 'INSERT INTO feedback VALUES(?,?,?,?)';
+  db.query(sql,[e.username,e.feed_id,e.feed_type,e.feed_content],function(err,result){
     if(err){
       cb(true);
       return;
@@ -27,7 +27,6 @@ user.prototype.addItem = function(id,username,cb){
     cb(false,result);
   });
 };
-
 /*删*/
 user.prototype.delItem = function(feed_id,cb){
   const sql = 'DELETE FROM feedback WHERE feed_id=?';

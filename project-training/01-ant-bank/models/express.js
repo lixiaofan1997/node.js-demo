@@ -17,9 +17,9 @@ user.prototype.getAll = function(cb){
 };
 
 /*增*/
-user.prototype.addItem = function(id,username,cb){
-  const sql = 'INSERT INTO delivery(take_id,username) VALUES(?,?)';
-  db.query(sql,[id,username],function(err,result){
+user.prototype.addItem = function(e,cb){
+  const sql = 'INSERT INTO delivery VALUES(?,?,?,?,?,?)';
+  db.query(sql,[e.username,e.take_id,e.take_time,e.take_name,e.take_place,e.take_content],function(err,result){
     if(err){
       cb(true);
       return;

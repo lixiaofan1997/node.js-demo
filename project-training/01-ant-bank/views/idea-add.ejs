@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>添加意见反馈</title>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/layui/css/modules/layer/default/layer.css">
+</head>
+<body>
+    <div class="container">
+        <form role="form" id="form_all">
+          
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <input type="text" class="form-control" id="username" placeholder="用户名">
+            </div>
+            <div class="form-group">
+                <label for="feed_id">反馈编号</label>
+                <input type="text" class="form-control" id="feed_id" placeholder="反馈ID">
+            </div>
+            <div class="form-group">
+                <label for="feed_type">反馈类型</label>
+                <input type="text" class="form-control" id="feed_type" placeholder="反馈类型">
+            </div>
+            <div class="form-group">
+                <label for="feed_content">反馈内容</label>
+                <input type="text" class="form-control" id="feed_content" placeholder="详细内容">
+            </div>
+            <input type="submit" value="确定" id="insert">
+            <input type="submit" value="取消" id="cancle">
+        </form>
+    </div>
+</body>
+<script src="/js/jquery-1.10.2.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Js -->
+<script src="/js/jquery.metisMenu.js"></script>
+ <!-- DATA TABLE SCRIPTS -->
+<script src="/js/dataTables/jquery.dataTables.js"></script>
+<script src="/js/dataTables/dataTables.bootstrap.js"></script>
+<script src="/layui/lay/modules/layer.js"></script>
+<script>
+    //确定提交数据
+    $('#insert').click(function(){
+            var username = $('#username').val();
+            var feed_id = $('#feed_id').val();
+            var feed_type = $('#feed_type').val();
+            var feed_content = $('#feed_content').val();
+            var obj = {
+                username:username,
+                feed_id:feed_id,
+                feed_type:feed_type, 
+                feed_content:feed_content,
+            }
+            var obj1 = JSON.stringify(obj);
+            fetch('http://192.168.179.144:3000/idea', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                body:'item=' + obj1
+            });
+            var index = parent.layer.index; //获取当前弹层的索引号
+            parent.layer.close(index);
+            layer.msg('添加成功');
+        });
+    //取消清空表单
+    $('#cancle').click(function(){
+        $(':input','#form_all') 
+        .not(':button, :submit, :reset, :hidden') 
+        .val('') 
+        .removeAttr('checked') 
+        .removeAttr('selected');
+    })
+    
+</script>
+</html>

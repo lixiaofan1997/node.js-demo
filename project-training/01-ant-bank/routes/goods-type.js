@@ -5,7 +5,7 @@ var router = express.Router();
 var user = new Users();
 
 /* GET home page. */
-router.get('/', function(req, res/*, next*/) {
+router.get('/',function(req, res/*, next*/) {
   user.getAll((err,result)=>{
     if(err){
       console.error(err);
@@ -16,19 +16,18 @@ router.get('/', function(req, res/*, next*/) {
 });
 
 router.post('/',function(req,res){
-  user.addItem(req.body.item,function(err){
-    if(err){
-      res.status(500).send('DB error');
-      return;
-    }
-  });
-  user.getAll(function(err,items){
-    if(err){
-      res.status(500).send('DB error');
-      return;
-    }
-    res.render('good-type',{items:items});
-  });
+  res.header('Access-Control-Allow-Origin','*');
+  //console.log(req.body);
+  if(req.body !== '') {
+    user.addItem(JSON.parse(req.body.item), (err) => {
+      //console.log(req.body.item);
+      if(err) {
+        res.status(500).send('DB error!');
+      }else {
+        res.status(200).send('OK!');
+      }       
+    });
+  }
 });
 
 router.delete('/',function(req,res){

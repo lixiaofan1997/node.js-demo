@@ -51,16 +51,6 @@ user.prototype.delAll = function(cb){
   });
 };
 
-/*改*/
-user.prototype.update = function(id,username,cb){
-  const sql = 'UPDATE groups SET username = ? WHERE id = ?';
-  db.query(sql,[username,id],function(err,results){
-    if(err){
-      cb(true);
-      return;
-    }
-    cb(false,results);
-  });
-};
+
 
 module.exports = user;

@@ -381,14 +381,25 @@
             var tr = document.getElementById(na);
             tr.parentNode.removeChild(tr);
         }
+        function change(){
+            layer.open({
+                    type: 2,
+                    title: '添加兼职招聘',
+                    maxmin: true,
+                    shadeClose: true, //点击遮罩关闭层
+                    area : ['800px' , '520px'],
+                    content: 'part-time-add'
+            });
+        }
+        //添加兼职招聘
         $('#insert').on('click', function(){
                 layer.open({
-                type: 2,
-                title: '添加兼职',
-                maxmin: true,
-                shadeClose: true, //点击遮罩关闭层
-                area : ['800px' , '520px'],
-                content: 'user-add'
+                    type: 2,
+                    title: '添加兼职招聘',
+                    maxmin: true,
+                    shadeClose: true, //点击遮罩关闭层
+                    area : ['800px' , '520px'],
+                    content: 'part-time-add'
             });
         });
     </script>

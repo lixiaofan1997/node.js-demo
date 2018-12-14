@@ -371,14 +371,25 @@
             var tr = document.getElementById(na);
             tr.parentNode.removeChild(tr);
         }
+        function change(){
+            layer.open({
+                    type: 2,
+                    title: '添加聊天信息',
+                    maxmin: true,
+                    shadeClose: true, //点击遮罩关闭层
+                    area : ['800px' , '520px'],
+                    content: 'message-add'
+            });
+        }
+        //添加聊天信息
         $('#insert').on('click', function(){
                 layer.open({
-                type: 2,
-                title: '添加消息',
-                maxmin: true,
-                shadeClose: true, //点击遮罩关闭层
-                area : ['800px' , '520px'],
-                content: 'user-add'
+                    type: 2,
+                    title: '添加聊天信息',
+                    maxmin: true,
+                    shadeClose: true, //点击遮罩关闭层
+                    area : ['800px' , '520px'],
+                    content: 'message-add'
             });
         });
     </script>

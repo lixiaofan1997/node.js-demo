@@ -16,7 +16,14 @@ var goodstypeRouter = require('./routes/goods-type');
 var parttimeRouter = require('./routes/part-time');
 var exp = require('./routes/express');
 var useradd = require('./routes/user-add');
-
+var articleadd = require('./routes/article-add');
+var ideaadd= require('./routes/idea-add');
+var messageadd= require('./routes/message-add');
+var lostadd= require('./routes/lost-add');
+var goodsadd= require('./routes/goods-add');
+var goodstypeadd= require('./routes/goods-type-add');
+var parttimeadd= require('./routes/part-time-add');
+var expressadd= require('./routes/express-add');
 var app = express();
 
 // view engine setup
@@ -41,6 +48,14 @@ app.use('/goods-type',goodstypeRouter);
 app.use('/part-time',parttimeRouter);
 app.use('/express',exp);
 app.use('/user-add',useradd);
+app.use('/article-add',articleadd);
+app.use('/idea-add',ideaadd);
+app.use('/message-add',messageadd);
+app.use('/lost-add',lostadd);
+app.use('/goods-add',goodsadd);
+app.use('/goods-type-add',goodstypeadd);
+app.use('/part-time-add',parttimeadd);
+app.use('/express-add',expressadd);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

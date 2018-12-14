@@ -18,7 +18,7 @@ user.prototype.getAll = function(cb){
 
 /*增*/
 user.prototype.addItem = function(e,cb){
-  const sql = 'INSERT INTO commodity VALUES(?,?,?,?,?,?,?,?,?)';
+  const sql = 'INSERT INTO commodity VALUES(?,?,?,?,?,?,?,?,?,?)';
   db.query(sql,[e.goods_id,e.goods_name,e.goods_price,e.goods_type,e.username,e.goods_addr, e.goods_description,e.goods_date,e.goods_pic],function(err,result){
     if(err){
       cb(true);
@@ -29,9 +29,9 @@ user.prototype.addItem = function(e,cb){
 };
 
 /*删*/
-user.prototype.delItem = function(goods_id,cb){
-  const sql = 'DELETE FROM commodity WHERE goods_id=?';
-  db.query(sql,[goods_id],function(err,result){
+user.prototype.delItem = function(id,cb){
+  const sql = 'DELETE FROM commodity WHERE id=?';
+  db.query(sql,[id],function(err,result){
     if(err){
       cb(true);
       return;
@@ -51,16 +51,6 @@ user.prototype.delAll = function(cb){
   });
 };
 
-/*改*/
-user.prototype.update = function(id,username,cb){
-  const sql = 'UPDATE commodity SET username = ? WHERE id = ?';
-  db.query(sql,[username,id],function(err,results){
-    if(err){
-      cb(true);
-      return;
-    }
-    cb(false,results);
-  });
-};
+
 
 module.exports = user;
