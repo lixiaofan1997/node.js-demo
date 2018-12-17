@@ -11,15 +11,15 @@ user.prototype.getAll = function(cb){
       cb(true);
       return;                
     }
-    result.forEach((e) => {items.push(e.username,e.item_id,e.item_time,e.item_name,e.item_type,e.item_addr,e.item_date,e.item_content,e.item_pic,e.item_number );});
+    result.forEach((e) => {items.push(e.username,e.item_id,e.item_time,e.item_name,e.item_type,e.item_addr,e.item_date,e.item_getaddr,e.item_content,e.item_pic,e.item_number );});
     cb(false,result);
   });
 };
 
 /*增*/
 user.prototype.addItem = function(e,cb){
-  const sql = 'INSERT INTO found VALUES(?,?,?,?,?,?,?,?,?,?)';
-  db.query(sql,[e.username,e.item_id,e.item_time,e.item_name,e.item_type,e.item_addr,e.item_date,e.item_content,e.item_pic,e.item_number ],function(err,result){
+  const sql = 'INSERT INTO found VALUES(?,?,?,?,?,?,?,?,?,?,?)';
+  db.query(sql,[e.username,e.item_id,e.item_time,e.item_name,e.item_type,e.item_addr,e.item_date,e.item_getaddr,e.item_content,e.item_pic,e.item_number ],function(err,result){
     if(err){
       cb(true);
       return;
