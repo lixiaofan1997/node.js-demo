@@ -83,7 +83,7 @@
                 goods_pic:goods_pic,                
             }
             var obj1 = JSON.stringify(obj);
-            fetch('http://192.168.179.144:3000/goods', {
+            fetch('http://192.168.142.144:3000/goods', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 body:'item=' + obj1

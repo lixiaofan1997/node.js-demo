@@ -4,22 +4,22 @@ var user = function(){};
 
 /*查*/
 user.prototype.getAll = function(cb){
-  const sql = 'SELECT * from chat';
+  const sql = 'SELECT * from users';
   var items = [];
   db.query(sql,function(err,result){
     if(err){
       cb(true);
       return;                
     }
-    result.forEach((e) => {items.push(e.username,e.chatting,e.content);});
+    result.forEach((e) => {items.push(e.id,e.username,e.studentId,e.school,e.telNum,e.password,e.avatar,e.issue,e.goods,e.part_time);});
     cb(false,result);
   });
 };
 
 /*增*/
-user.prototype.addItem = function(e,cb){
-  const sql = 'INSERT INTO chat VALUES(?,?,?)';
-  db.query(sql,[e.username,e.chatting,e.content],function(err,result){
+user.prototype.addItem = function(id,username,cb){
+  const sql = 'INSERT INTO users(id,username) VALUES(?,?)';
+  db.query(sql,[id,username],function(err,result){
     if(err){
       cb(true);
       return;
@@ -30,7 +30,7 @@ user.prototype.addItem = function(e,cb){
 
 /*删*/
 user.prototype.delItem = function(username,cb){
-  const sql = 'DELETE FROM chat WHERE username=?';
+  const sql = 'DELETE FROM users WHERE username=?';
   db.query(sql,[username],function(err,result){
     if(err){
       cb(true);
@@ -41,7 +41,7 @@ user.prototype.delItem = function(username,cb){
 };
 
 user.prototype.delAll = function(cb){
-  const sql = 'DELETE FROM chat';
+  const sql = 'DELETE FROM users';
   db.query(sql,function(err,results){
     if(err){
       cb(true);
@@ -53,7 +53,7 @@ user.prototype.delAll = function(cb){
 
 /*改*/
 user.prototype.update = function(id,username,cb){
-  const sql = 'UPDATE chat SET username = ? WHERE id = ?';
+  const sql = 'UPDATE users SET username = ? WHERE id = ?';
   db.query(sql,[username,id],function(err,results){
     if(err){
       cb(true);

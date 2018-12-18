@@ -1,7 +1,7 @@
 {
   "host":"localhost",
   "user":"root",
-  "password":"1997lxf",
+  "password":"ddd",
   "database":"Ant_Search",
   "connectionLimit":10,
   "supportBigNumbers":true

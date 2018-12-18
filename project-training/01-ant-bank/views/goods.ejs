@@ -26,7 +26,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index1.ejs"><i class="fa fa-comments"></i> <strong>蚂蚁寻物 </strong></a>
+                <a class="navbar-brand" href="index1"><i class="fa fa-comments"></i> <strong>蚂蚁寻物 </strong></a>
             </div>
 
             <ul class="nav navbar-top-links navbar-right">
@@ -372,7 +372,7 @@
             $('#dataTables-example').dataTable();
         });
         function del(id){
-            fetch('http://192.168.179.144:3000/goods', {
+            fetch('http://192.168.142.144:3000/goods', {
             method: 'delete',
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
             body:'item=' + id

@@ -37,7 +37,7 @@
             <div class="form-group">
                 <label for=item_date">拾物时间</label>
                 <input type="text" class="form-control" id="item_date" placeholder="拾物时间（date类型）">
-            </div> 
+            </div>
             <div class="form-group">
                 <label for="item_content">详细内容</label>
                 <input type="text" class="form-control" id="item_content" placeholder="拾到物品的详细情况">
@@ -83,13 +83,13 @@
                 item_name:item_name,
                 item_type:item_type,   
                 item_addr:item_addr,  
-                item_date:item_date,  
+                item_date:item_date,           
                 item_content:item_content,      
                 item_pic:item_pic,          
                 item_number:item_number,
             }
             var obj1 = JSON.stringify(obj);
-            fetch('http://192.168.179.144:3000/lost', {
+            fetch('http://192.168.142.144:3000/lost', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 body:'item=' + obj1

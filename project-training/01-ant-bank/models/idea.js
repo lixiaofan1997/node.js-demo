@@ -4,22 +4,22 @@ var user = function(){};
 
 /*查*/
 user.prototype.getAll = function(cb){
-  const sql = 'SELECT * from feedback';
+  const sql = 'SELECT * from users';
   var items = [];
   db.query(sql,function(err,result){
     if(err){
       cb(true);
       return;                
     }
-    result.forEach((e) => {items.push(e.username,e.feed_id,e.feed_type,e.feed_content);});
+    result.forEach((e) => {items.push(e.id,e.username,e.studentId,e.school,e.telNum,e.password,e.avatar,e.issue,e.goods,e.part_time);});
     cb(false,result);
   });
 };
 
 /*增*/
-user.prototype.addItem = function(e,cb){
-  const sql = 'INSERT INTO feedback VALUES(?,?,?,?)';
-  db.query(sql,[e.username,e.feed_id,e.feed_type,e.feed_content],function(err,result){
+user.prototype.addItem = function(id,username,cb){
+  const sql = 'INSERT INTO users(id,username) VALUES(?,?)';
+  db.query(sql,[id,username],function(err,result){
     if(err){
       cb(true);
       return;
@@ -27,10 +27,11 @@ user.prototype.addItem = function(e,cb){
     cb(false,result);
   });
 };
+
 /*删*/
-user.prototype.delItem = function(feed_id,cb){
-  const sql = 'DELETE FROM feedback WHERE feed_id=?';
-  db.query(sql,[feed_id],function(err,result){
+user.prototype.delItem = function(username,cb){
+  const sql = 'DELETE FROM users WHERE username=?';
+  db.query(sql,[username],function(err,result){
     if(err){
       cb(true);
       return;
@@ -40,7 +41,7 @@ user.prototype.delItem = function(feed_id,cb){
 };
 
 user.prototype.delAll = function(cb){
-  const sql = 'DELETE FROM feedback';
+  const sql = 'DELETE FROM users';
   db.query(sql,function(err,results){
     if(err){
       cb(true);
@@ -52,7 +53,7 @@ user.prototype.delAll = function(cb){
 
 /*改*/
 user.prototype.update = function(id,username,cb){
-  const sql = 'UPDATE feedback SET username = ? WHERE id = ?';
+  const sql = 'UPDATE users SET username = ? WHERE id = ?';
   db.query(sql,[username,id],function(err,results){
     if(err){
       cb(true);
