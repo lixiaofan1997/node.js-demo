@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>添加文章</title>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/layui/css/modules/layer/default/layer.css">
+</head>
+<body>
+    <div class="container">
+        <form role="form" id="form_all">
+          
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <input type="text" class="form-control" id="username" placeholder="用户名">
+            </div>
+            <div class="form-group">
+                <label for="issue_id">文章ID</label>
+                <input type="text" class="form-control" id="issue_id" placeholder="文章ID">
+            </div>
+            <div class="form-group">
+                <label for="issue_lable">标签</label>
+                <input type="text" class="form-control" id="issue_lable" placeholder="#失物寻找##我想要#">
+            </div>
+            <div class="form-group">
+                <label for="issue_time">发布时间</label>
+                <input type="text" class="form-control" id="issue_time" placeholder="年月日时分秒">
+            </div>
+            <div class="form-group">
+                <label for="issue_content">文字内容</label>
+                <input type="text" class="form-control" id="issue_content" placeholder="内容">
+            </div>
+            <div class="form-group">
+                <label for="issue_pic">图片</label>
+                <input type="text" class="form-control" id="issue_pic">
+            </div>
+            <input type="submit" value="确定" id="insert">
+            <input type="submit" value="取消" id="cancle">
+        </form>
+    </div>
+</body>
+<script src="/js/jquery-1.10.2.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Js -->
+<script src="/js/jquery.metisMenu.js"></script>
+ <!-- DATA TABLE SCRIPTS -->
+<script src="/js/dataTables/jquery.dataTables.js"></script>
+<script src="/js/dataTables/dataTables.bootstrap.js"></script>
+<script src="/layui/lay/modules/layer.js"></script>
+<script>
+    //确定提交数据
+    $('#insert').click(function(){
+            var username = $('#username').val();
+            var issue_id = $('#issue_id').val();
+            var issue_lable = $('#issue_lable').val();
+            var issue_time = $('#issue_time').val();
+            var issue_content = $('#issue_content').val();
+            var issue_pic = $('#issue_pic').val();
+            var obj = {
+                username:username,
+                issue_id:issue_id,
+                issue_lable:issue_lable, 
+                issue_time:issue_time,
+                issue_content:issue_content,  
+                issue_pic:issue_pic
+            }
+            var obj1 = JSON.stringify(obj);
+            fetch('http://192.168.179.144:3000/aticle', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                body:'item=' + obj1
+            });
+            var index = parent.layer.index; //获取当前弹层的索引号
+            parent.layer.close(index);
+            layer.msg('添加成功');
+        });
+    //取消清空表单
+    $('#cancle').click(function(){
+        $(':input','#form_all') 
+        .not(':button, :submit, :reset, :hidden') 
+        .val('') 
+        .removeAttr('checked') 
+        .removeAttr('selected');
+    })
+    
+</script>
+</html>

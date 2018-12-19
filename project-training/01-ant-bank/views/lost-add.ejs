@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>添加失物招领</title>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/layui/css/modules/layer/default/layer.css">
+</head>
+<body>
+    <div class="container">
+        <form role="form" id="form_all">
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <input type="text" class="form-control" id="username" placeholder="用户名">
+            </div>
+            <div class="form-group">
+                <label for="item_id">发帖ID</label>
+                <input type="text" class="form-control" id="item_id" placeholder="发帖ID">
+            </div>
+            <div class="form-group">
+                <label for="item_time">失物发帖时间</label>
+                <input type="text" class="form-control" id="item_time" placeholder="date">
+            </div>
+            <div class="form-group">
+                <label for="item_name">失物发帖名称</label>
+                <input type="text" class="form-control" id="item_name" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="item_type">物品种类</label>
+                <input type="text" class="form-control" id="item_type" placeholder="种类">
+            </div>
+            <div class="form-group">
+                <label for="item_addr">拾物地点</label>
+                <input type="text" class="form-control" id="item_addr" placeholder="拾物地点">
+            </div>
+            <div class="form-group">
+                <label for=item_date">拾物时间</label>
+                <input type="text" class="form-control" id="item_date" placeholder="拾物时间（date类型）">
+            </div>
+            <div class="form-group">
+                <label for="item_content">详细内容</label>
+                <input type="text" class="form-control" id="item_content" placeholder="拾到物品的详细情况">
+            </div>
+            <div class="form-group">
+                <label for="item_pic">图片</label>
+                <input type="text" class="form-control" id="item_pic">
+            </div>
+            <div class="form-group">
+                <label for="item_number">校园卡卡号</label>
+                <input type="text" class="form-control" id="item_number" placeholder="如果拾到的是校园卡请输入校园卡号">
+            </div>
+            <input type="submit" value="确定" id="insert">
+            <input type="submit" value="取消" id="cancle">
+        </form>
+    </div>
+</body>
+<script src="/js/jquery-1.10.2.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Js -->
+<script src="/js/jquery.metisMenu.js"></script>
+ <!-- DATA TABLE SCRIPTS -->
+<script src="/js/dataTables/jquery.dataTables.js"></script>
+<script src="/js/dataTables/dataTables.bootstrap.js"></script>
+<script src="/layui/lay/modules/layer.js"></script>
+<script>
+    //确定提交数据
+    $('#insert').click(function(){
+            var username = $('#username').val();
+            var item_id = $('#item_id').val();
+            var item_time = $('#item_time').val();
+            var item_name = $('#item_name').val();
+            var item_type = $('#item_type').val();
+            var item_addr = $('#item_addr').val();
+            var item_date = $('#item_date').val();
+            var item_content = $('#item_content').val();
+            var item_pic = $('#item_pic').val();
+            var item_number = $('#item_number').val();
+            var obj = {
+                username:username,
+                item_id:item_id,
+                item_time:item_time, 
+                item_name:item_name,
+                item_type:item_type,   
+                item_addr:item_addr,  
+                item_date:item_date,           
+                item_content:item_content,      
+                item_pic:item_pic,          
+                item_number:item_number,
+            }
+            var obj1 = JSON.stringify(obj);
+            fetch('http://192.168.179.144:3000/lost', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                body:'item=' + obj1
+            });
+            var index = parent.layer.index; //获取当前弹层的索引号
+            parent.layer.close(index);
+            layer.msg('添加成功');
+        });
+    //取消清空表单
+    $('#cancle').click(function(){
+        $(':input','#form_all') 
+        .not(':button, :submit, :reset, :hidden') 
+        .val('') 
+        .removeAttr('checked') 
+        .removeAttr('selected');
+    })
+    
+</script>
+</html>

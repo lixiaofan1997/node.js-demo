@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>添加商品</title>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/layui/css/modules/layer/default/layer.css">
+</head>
+<body>
+    <div class="container">
+        <form role="form" id="form_all">
+            <div class="form-group">
+                <label for="goods_id">商品ID</label>
+                <input type="text" class="form-control " id="goods_id" width="100px">
+            </div>
+            <div class="form-group">
+                <label for="goods_name">商品名</label>
+                <input type="text" class="form-control" id="goods_name" placeholder="商品名">
+            </div>
+            <div class="form-group">
+                <label for="goods_price">价格</label>
+                <input type="text" class="form-control" id="goods_price" placeholder="价格">
+            </div>
+            <div class="form-group">
+                <label for="goods_type">商品类型</label>
+                <input type="text" class="form-control" id="goods_type" placeholder="类型">
+            </div>
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <input type="text" class="form-control" id="username" placeholder="用户名">
+            </div>
+            <div class="form-group">
+                <label for="goods_addr">商品地址</label>
+                <input type="text" class="form-control" id="goods_addr" placeholder="建议详细描述">
+            </div>
+            <div class="form-group">
+                <label for="goods_description">具体描述</label>
+                <input type="text" class="form-control" id="goods_description" placeholder="建议详细描述">
+            </div>
+            <div class="form-group">
+                <label for="goods_date">发布时间</label>
+                <input type="text" class="form-control" id="goods_date" placeholder="date类型">
+            </div>
+            <div class="form-group">
+                <label for="goods_pic">图片</label>
+                <input type="text" class="form-control" id="goods_pic">
+            </div>
+            <input type="submit" value="确定" id="insert">
+            <input type="submit" value="取消" id="cancle">
+        </form>
+    </div>
+</body>
+<script src="/js/jquery-1.10.2.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Js -->
+<script src="/js/jquery.metisMenu.js"></script>
+ <!-- DATA TABLE SCRIPTS -->
+<script src="/js/dataTables/jquery.dataTables.js"></script>
+<script src="/js/dataTables/dataTables.bootstrap.js"></script>
+<script src="/layui/lay/modules/layer.js"></script>
+<script>
+    //确定提交数据
+    $('#insert').click(function(){
+            var goods_id = $('#goods_id').val();
+            var goods_name = $('#goods_name').val();
+            var goods_price = $('#goods_price').val();
+            var goods_type = $('#goods_type').val();
+            var username = $('#username').val();
+            var goods_addr = $('#goods_addr').val();
+            var goods_description = $('#goods_description').val();
+            var goods_date = $('#goods_date').val();
+            var goods_pic = $('#goods_pic').val();
+            var obj = {
+                goods_id:goods_id,
+                goods_name:goods_name,
+                goods_price:goods_price,
+                goods_type:goods_type, 
+                username:username,
+                goods_addr:goods_addr,   
+                goods_description:goods_description,  
+                goods_date:goods_date,           
+                goods_pic:goods_pic,                
+            }
+            var obj1 = JSON.stringify(obj);
+            fetch('http://192.168.179.144:3000/goods', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                body:'item=' + obj1
+            });
+            var index = parent.layer.index; //获取当前弹层的索引号
+            parent.layer.close(index);
+            layer.msg('添加成功');
+        });
+    //取消清空表单
+    $('#cancle').click(function(){
+        $(':input','#form_all') 
+        .not(':button, :submit, :reset, :hidden') 
+        .val('') 
+        .removeAttr('checked') 
+        .removeAttr('selected');
+    })
+    
+</script>
+</html>

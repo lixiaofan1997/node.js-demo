@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>添加兼职</title>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/layui/css/modules/layer/default/layer.css">
+</head>
+<body>
+    <div class="container">
+        <form role="form" id="form_all">
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <input type="text" class="form-control" id="username" placeholder="用户名">
+            </div>
+            <div class="form-group">
+                <label for="part_id">兼职ID</label>
+                <input type="text" class="form-control" id="part_id" placeholder="兼职ID">
+            </div>
+            <div class="form-group">
+                <label for="part_date">兼职发帖时间</label>
+                <input type="text" class="form-control" id="part_date" placeholder="date类型">
+            </div>
+            <div class="form-group">
+                <label for="part_name">兼职发帖名称</label>
+                <input type="text" class="form-control" id="part_name" placeholder="手机号11位">
+            </div>
+            <div class="form-group">
+                <label for="part_price">价格结算方式</label>
+                <input type="text" class="form-control" id="part_price" placeholder="工资及结算方式">
+            </div>
+            <div class="form-group">
+                <label for="part_worktime">工作时间</label>
+                <input type="text" class="form-control" id="part_worktime">
+            </div>
+            <div class="form-group">
+                <label for="part_addr">工作地点</label>
+                <input type="text" class="form-control" id="part_addr" placeholder="详细地点">
+            </div>
+            <div class="form-group">
+                <label for="part_content">职位描述</label>
+                <input type="text" class="form-control" id="part_content" placeholder="请填写详细">
+            </div>
+            <input type="submit" value="确定" id="insert">
+            <input type="submit" value="取消" id="cancle">
+        </form>
+    </div>
+</body>
+<script src="/js/jquery-1.10.2.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Js -->
+<script src="/js/jquery.metisMenu.js"></script>
+ <!-- DATA TABLE SCRIPTS -->
+<script src="/js/dataTables/jquery.dataTables.js"></script>
+<script src="/js/dataTables/dataTables.bootstrap.js"></script>
+<script src="/layui/lay/modules/layer.js"></script>
+<script>
+    //确定提交数据
+    $('#insert').click(function(){
+            var username = $('#username').val();
+            var part_id = $('#part_id').val();
+            var part_date = $('#part_date').val();
+            var part_name = $('#part_name').val();
+            var part_price = $('#part_price').val();
+            var part_worktime = $('#part_worktime').val();
+            var part_addr = $('#part_addr').val();
+            var part_content = $('#part_content').val();
+            var obj = {
+                username:username,
+                part_id:part_id,
+                part_date:part_date, 
+                part_name:part_name,
+                part_price:part_price,   
+                part_worktime:part_worktime,  
+                part_addr:part_addr,           
+                part_content:part_content,                
+            }
+            var obj1 = JSON.stringify(obj);
+            fetch('http://192.168.179.144:3000/part-time', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                body:'item=' + obj1
+            });
+            var index = parent.layer.index; //获取当前弹层的索引号
+            parent.layer.close(index);
+            layer.msg('添加成功');
+        });
+    //取消清空表单
+    $('#cancle').click(function(){
+        $(':input','#form_all') 
+        .not(':button, :submit, :reset, :hidden') 
+        .val('') 
+        .removeAttr('checked') 
+        .removeAttr('selected');
+    })
+    
+</script>
+</html>
