@@ -19,7 +19,7 @@ exp.prototype.getAll = function(cb){
 /*增*/
 exp.prototype.addItem = function(e,cb){
   const sql = 'INSERT INTO delivery VALUES(?,?,?,?,?,?)';
-  db.query(sql,[e.username,e.take_id,e.take_time,e.take_name,e.take_place,e.take_content],function(err,result){
+  db.query(sql,[e.take_id,e.username,e.take_time,e.take_name,e.take_place,e.take_content],function(err,result){
     if(err){
       cb(true);
       return;

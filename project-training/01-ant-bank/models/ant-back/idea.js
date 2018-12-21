@@ -19,7 +19,7 @@ idea.prototype.getAll = function(cb){
 /*增*/
 idea.prototype.addItem = function(e,cb){
   const sql = 'INSERT INTO feedback VALUES(?,?,?,?)';
-  db.query(sql,[e.username,e.feed_id,e.feed_type,e.feed_content],function(err,result){
+  db.query(sql,[e.feed_id,e.username,e.feed_type,e.feed_content],function(err,result){
     if(err){
       cb(true);
       return;

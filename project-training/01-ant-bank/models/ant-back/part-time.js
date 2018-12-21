@@ -19,7 +19,7 @@ partTime.prototype.getAll = function(cb){
 /*增*/
 partTime.prototype.addItem = function(e,cb){
   const sql = 'INSERT INTO partime_job VALUES(?,?,?,?,?,?,?,?)';
-  db.query(sql,[e.username,e.part_id,e.part_date,e.part_name,e.part_price,e.part_worktime,e.part_addr,e.part_content],function(err,result){
+  db.query(sql,[e.part_id,e.username,e.part_date,e.part_name,e.part_price,e.part_worktime,e.part_addr,e.part_content],function(err,result){
     if(err){
       cb(true);
       return;

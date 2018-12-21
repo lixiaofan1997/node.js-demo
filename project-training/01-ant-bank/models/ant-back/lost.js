@@ -19,7 +19,7 @@ lost.prototype.getAll = function(cb){
 /*增*/
 lost.prototype.addItem = function(e,cb){
   const sql = 'INSERT INTO found VALUES(?,?,?,?,?,?,?,?,?,?)';
-  db.query(sql,[e.username,e.item_id,e.item_time,e.item_name,e.item_type,e.item_addr,e.item_date,e.item_content,e.item_pic,e.item_number],function(err,result){
+  db.query(sql,[e.item_id,e.username,e.item_time,e.item_name,e.item_type,e.item_addr,e.item_date,e.item_content,e.item_pic,e.item_number],function(err,result){
     if(err){
       cb(true);
       return;

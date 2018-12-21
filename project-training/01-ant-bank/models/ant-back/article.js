@@ -19,7 +19,7 @@ article.prototype.getAll = function(cb){
 /*增*/
 article.prototype.addItem = function(e,cb){
   const sql = 'INSERT INTO issues VALUES(?,?,?,?,?,?)';
-  db.query(sql,[e.username,e.issue_id,e.issue_lable,e.issue_time,e.issue_content,e.issue_pic],function(err,result){
+  db.query(sql,[e.issue_id,e.username,e.issue_lable,e.issue_time,e.issue_content,e.issue_pic],function(err,result){
     if(err){
       cb(true);
       return;
