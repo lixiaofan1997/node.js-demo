@@ -55,7 +55,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use('/',loginRouter);
+app.use('/login',loginRouter);
 app.use('/zhuce',zhuceRouter);
 app.use('/index1', indexRouter);
 app.use('/users', usersRouter);
