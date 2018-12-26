@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+var loginRouter = require('./routes/ant-back/login');
+var zhuceRouter = require('./routes/ant-back/zhuce');
 var indexRouter = require('./routes/ant-back/index1');
 var usersRouter = require('./routes/ant-back/users');
 var userRouter = require('./routes/ant-back/user');
@@ -52,6 +54,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+app.use('/',loginRouter);
+app.use('/zhuce',zhuceRouter);
 app.use('/index1', indexRouter);
 app.use('/users', usersRouter);
 app.use('/user',userRouter);
