@@ -15,4 +15,14 @@ router.get('/',function(req,res){
   });
 });
 
+router.post('/',function(req,res){
+  user.update(JSON.parse(JSON.stringify(req.body)),(err)=>{
+    if(err){
+      res.status(500).send('DB error');
+    }else{
+      res.status(200).send('Success');
+    }
+  });
+});
+
 module.exports = router;

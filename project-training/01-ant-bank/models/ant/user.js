@@ -17,5 +17,16 @@ user.prototype.getAll = function(cb){
 
 };
 
+/*改*/
+user.prototype.update = function(obj,cb){
+  const sql = 'UPDATE users SET username=?,telNum=?,password=? WHERE id=?';
+  db.query(sql,[obj.username,obj.telNum,obj.password,obj.id],function(err,result){
+    if(err){
+      cb(true);
+      return;
+    }
+    cb(false,result);
+  });
+};
 
 module.exports = user;

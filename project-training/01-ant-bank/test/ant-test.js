@@ -1,4 +1,4 @@
-const User = require('../models/ant-back/login.js');
+const User = require('../models/ant/user.js');
 
 var user = new User();
 
@@ -19,19 +19,13 @@ user.addUser({username:'weijia',studentId:123456,school:'河大',telNum:1234567,
   }
 });
 */
-
+ 
 /*
 user.getAll({telNum:'15633744859'},function(err,items){
   console.log(items);
 });
 */
 
-/*
-user.addItem({username:'weijia',tel:12,password:'123'},function(err,item){
-  console.log(item);
-});
-*/
-
-user.logIn({tel:1},function(err,item){
-  console.log(item);
+user.update({username:'1',telNum:1,password:12,id:0},function(err,items){
+  console.log(items);
 });

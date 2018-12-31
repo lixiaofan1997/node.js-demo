@@ -11,7 +11,7 @@ user.prototype.getAll = function(obj,cb){
       return;
     }
     cb(false,result);
-    console.log(result);
+    //console.log(result);
   });
 };
 

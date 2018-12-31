@@ -26,7 +26,8 @@ var goodsadd= require('./routes/ant-back/goods-add');
 var goodstypeadd= require('./routes/ant-back/goods-type-add');
 var parttimeadd= require('./routes/ant-back/part-time-add');
 var expressadd= require('./routes/ant-back/express-add');
-//var userbefore = require('./routes/ant/user.js');
+//前端
+var userbefore = require('./routes/ant/user.js');
 var feedRouter = require('./routes/ant/feedback.js');
 var issueRouter = require('./routes/ant/issue.js');
 var foundRouter = require('./routes/ant/found.js');
@@ -40,6 +41,7 @@ var twoissuesRouter = require('./routes/ant/twoissues.js');
 var twojobRouter = require('./routes/ant/twojob.js');
 var twocommodityRouter = require('./routes/ant/twocommodity.js');
 var twodeliveryRouter = require('./routes/ant/twodelivery.js');
+//var uploadRouter = require('./routes/ant/upload.js');
 
 
 var app = express();
@@ -54,8 +56,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-app.use('/login',loginRouter);
+app.use('/',loginRouter);
 app.use('/zhuce',zhuceRouter);
 app.use('/index1', indexRouter);
 app.use('/users', usersRouter);
@@ -77,7 +78,9 @@ app.use('/goods-add',goodsadd);
 app.use('/goods-type-add',goodstypeadd);
 app.use('/part-time-add',parttimeadd);
 app.use('/express-add',expressadd);
-//app.use('/before/user',userbefore);
+//前端
+app.use('/before/users',userbefore);
+app.use('/before/feedback',feedRouter);
 app.use('/before/issue',issueRouter);
 app.use('/before/found',foundRouter);
 app.use('/before/delivery',deliveryRouter);
@@ -90,7 +93,7 @@ app.use('/before/twoissues',twoissuesRouter);
 app.use('/before/twojob',twojobRouter);
 app.use('/before/twocommodity',twocommodityRouter);
 app.use('/before/twodelivery',twodeliveryRouter);
-app.use('/before/feedback',feedRouter);
+//app.use('/before/upload',uploadRouter);
 
 
 // catch 404 and forward to error handler

@@ -11,7 +11,7 @@ idea.prototype.getAll = function(cb){
       cb(true);
       return;                
     }
-    result.forEach((e) => {items.push(e.username,e.feed_id,e.feed_type,e.feed_content);});
+    result.forEach((e) => {items.push(e.feed_id,e.username,e.feed_type,e.feed_content);});
     cb(false,result);
   });
 };
