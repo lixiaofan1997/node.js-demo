@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bootstrap Login Form Template</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="assets/css/form-elements.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="/layui/css/modules/layer/default/layer.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+        <!-- <link rel="shortcut icon" href="./assets/ico/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="./assets/ico/apple-touch-icon-57-precomposed.png"> -->
+
+    </head>
+
+    <body>
+
+        <!-- Top content -->
+        <div class="top-content">
+        	
+            <div class="inner-bg" style="background-image:url(/assets/img/backgrounds/1.jpg)">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                            <h1><strong>蚂蚁寻物</strong> 后台注册页面</h1>
+                            <div class="description">
+                            	<p>
+	                            	这里是蚂蚁寻物后台注册界面
+                            	</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                        	<div class="form-top">
+                        		<div class="form-top-left">
+                        			<h3>注册账号</h3>
+                            		<p>输入正确信息注册页面</p>
+                        		</div>
+                        		<div class="form-top-right">
+                        			<i class="fa fa-key"></i>
+                        		</div>
+                            </div>
+                            <div class="form-bottom">
+			                    <form role="form" action="" method="post" class="login-form">
+			                    	<div class="form-group">
+			                    		<label for="username">用户名</label>
+			                        	<input type="text" name="form-username" placeholder="用户名" class="form-username form-control" id="username">
+                                    </div>
+                                    <div class="form-group">
+			                    		<label  for="tel">手机号</label>
+			                        	<input type="text" name="form-username" placeholder="手机号" class="form-username form-control" id="tel">
+                                    </div>
+			                        <div class="form-group">
+			                        	<label  for="password">密码</label>
+			                        	<input type="password" name="form-password" placeholder="密码" class="form-password form-control" id="password">
+                                    </div>
+ 				</form>
+                                    <button type="submit" class="btn" id="insert">注册账号</button> 
+                                    <span id="missAll"></span>
+                               
+                            </div>
+                            <a href="/">已有账号？登录</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+
+        <!-- Javascript -->
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
+        
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+        <script src="/js/jquery-1.10.2.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+            <!-- Metis Menu Js -->
+        <script src="/js/jquery.metisMenu.js"></script>
+        <!-- DATA TABLE SCRIPTS -->
+        <script src="/js/dataTables/jquery.dataTables.js"></script>
+        <script src="/js/dataTables/dataTables.bootstrap.js"></script>
+        <script src="/layui/lay/modules/layer.js"></script>
+        <script>
+            //确定提交数据
+            $('#insert').click(function(){
+                        var username = $('#username').val();
+                        var tel = $('#tel').val();
+                        var password = $('#password').val();
+                        var obj = {
+                            username:username,
+                            tel:tel,
+                            password:password,
+                        }
+                        var obj1 = JSON.stringify(obj);
+                        fetch('http://192.168.179.144:3000/zhuce', {
+                            method: 'POST',
+                            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                            body:'item=' + obj1
+                            }).then(res=>res.text()).then(res=>{console.log(res)});
+                           // var index = parent.layer.index; //获取当前弹层的索引号
+                        // parent.layer.close(index);
+                        // layer.msg('添加成功');
+                        window.open("/","_self");//页面跳转
+                   
+                });
+                // //取消清空表单
+                // $('#cancle').click(function(){
+                //     $(':input','#form_all') 
+                //     .not(':button, :submit, :reset, :hidden') 
+                //     .val('') 
+                //     .removeAttr('checked') 
+                //     .removeAttr('selected');
+                // })
+                
+        </script>    
+    </body>
+
+</html>

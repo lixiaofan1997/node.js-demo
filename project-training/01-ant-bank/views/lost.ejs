@@ -320,6 +320,7 @@
                                             <th>详细内容</th>
                                             <th>图片</th>
                                             <th>校园卡卡号</th>
+					    <th>头像</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
@@ -335,7 +336,8 @@
                                                 <td><%= items[item].item_date %></td>  
                                                 <td><%= items[item].item_content %></td> 
                                                 <td><%= items[item].item_pic %></td>                                                      
-                                                <td><%= items[item].item_number %></td>                                                      
+                                                <td><%= items[item].item_number %></td>
+						<td><%= items[item].item_head %></td>                                                      
                                                 <td>
                                                     <button onclick="del('<%= items[item].item_id %>')">删除</button>
                                                     <button>修改</button>

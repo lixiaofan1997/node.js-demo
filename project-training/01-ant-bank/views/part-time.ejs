@@ -318,6 +318,7 @@
                                             <th>工作时间</th>
                                             <th>工作地点</th>
                                             <th>职位描述</th>
+					    <th>头像</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
@@ -332,6 +333,7 @@
                                                 <td><%= items[item].part_worktime %></td>  
                                                 <td><%= items[item].part_addr %></td>  
                                                 <td><%= items[item].part_content %></td> 
+						<td><%= items[item].part_head %></td>
                                                 <td>
                                                     <button onclick="del('<%= items[item].part_id %>')">删除</button>
                                                     <button>修改</button>

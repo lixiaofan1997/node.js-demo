@@ -316,6 +316,7 @@
                                             <th>发布时间</th>
                                             <th>文字内容</th>
                                             <th>图片</th>
+					    <th>头像</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
@@ -327,7 +328,8 @@
                                                 <td><%= items[item].issue_lable %></td>  
                                                 <td><%= items[item].issue_time %></td>  
                                                 <td><%= items[item].issue_content %></td>  
-                                                <td><%= items[item].issue_pic %></td>  
+                                                <td><%= items[item].issue_pic %></td>                                                  
+						<td><%= items[item].issue_head %></td>  
                                                 <td>
                                                     <button onclick="del('<%= items[item].issue_id %>')">删除</button>
                                                     <button>修改</button>

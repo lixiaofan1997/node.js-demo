@@ -42,6 +42,11 @@
                 <label for="part_content">职位描述</label>
                 <input type="text" class="form-control" id="part_content" placeholder="请填写详细">
             </div>
+ 	    <div class="form-group">
+                <label for="part_head">头像</label>
+                <input type="text" class="form-control" id="part_head" placeholder="头像">
+            </div>
+
             <input type="submit" value="确定" id="insert">
             <input type="submit" value="取消" id="cancle">
         </form>
@@ -66,6 +71,7 @@
             var part_worktime = $('#part_worktime').val();
             var part_addr = $('#part_addr').val();
             var part_content = $('#part_content').val();
+            var part_head = $('#part_head').val();
             var obj = {
                 username:username,
                 part_id:part_id,
@@ -74,7 +80,8 @@
                 part_price:part_price,   
                 part_worktime:part_worktime,  
                 part_addr:part_addr,           
-                part_content:part_content,                
+                part_content:part_content,       
+                part_head:part_head,          
             }
             var obj1 = JSON.stringify(obj);
             fetch('http://192.168.179.144:3000/part-time', {

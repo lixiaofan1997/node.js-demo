@@ -10,15 +10,16 @@
 <body>
     <div class="container">
         <form role="form" id="form_all">
-          
             <div class="form-group">
                 <label for="username">用户名</label>
                 <input type="text" class="form-control" id="username" placeholder="用户名">
             </div>
+
             <div class="form-group">
                 <label for="feed_id">反馈编号</label>
                 <input type="text" class="form-control" id="feed_id" placeholder="反馈ID">
             </div>
+
             <div class="form-group">
                 <label for="feed_type">反馈类型</label>
                 <input type="text" class="form-control" id="feed_type" placeholder="反馈类型">
@@ -48,8 +49,8 @@
             var feed_type = $('#feed_type').val();
             var feed_content = $('#feed_content').val();
             var obj = {
-                username:username,
                 feed_id:feed_id,
+                username:username,
                 feed_type:feed_type, 
                 feed_content:feed_content,
             }

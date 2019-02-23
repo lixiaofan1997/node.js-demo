@@ -11,7 +11,7 @@ exp.prototype.getAll = function(cb){
       cb(true);
       return;                
     }
-    result.forEach((e) => {items.push(e.username,e.take_id,e.take_time,e.take_name,e.take_place,e.take_content);});
+    result.forEach((e) => {items.push(e.username,e.take_id,e.take_time,e.take_name,e.take_place,e.take_content,e.take_head);});
     cb(false,result);
   });
 };

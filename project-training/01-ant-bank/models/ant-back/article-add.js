@@ -11,7 +11,7 @@ article.prototype.getAll = function(cb){
       cb(true);
       return;                
     }
-    result.forEach((e) => {items.push(e.username,e.issue_id,e.issue_lable,e.issue_time,e.issue_content,e.issue_pic);});
+    result.forEach((e) => {items.push(e.username,e.issue_id,e.issue_lable,e.issue_time,e.issue_content,e.issue_pic,e.issue_head);});
     cb(false,result);
   });
 };

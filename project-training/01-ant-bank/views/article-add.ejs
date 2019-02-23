@@ -35,6 +35,11 @@
                 <label for="issue_pic">图片</label>
                 <input type="text" class="form-control" id="issue_pic">
             </div>
+ 	    <div class="form-group">
+                <label for="issue_head">头像</label>
+                <input type="text" class="form-control" id="issue_head">
+            </div>
+
             <input type="submit" value="确定" id="insert">
             <input type="submit" value="取消" id="cancle">
         </form>
@@ -57,13 +62,15 @@
             var issue_time = $('#issue_time').val();
             var issue_content = $('#issue_content').val();
             var issue_pic = $('#issue_pic').val();
+	    var issue_head = $('#issue_head').val();
             var obj = {
                 username:username,
                 issue_id:issue_id,
                 issue_lable:issue_lable, 
                 issue_time:issue_time,
                 issue_content:issue_content,  
-                issue_pic:issue_pic
+                issue_pic:issue_pic,
+		issue_head:issue_head
             }
             var obj1 = JSON.stringify(obj);
             fetch('http://192.168.179.144:3000/aticle', {

@@ -11,7 +11,7 @@ partTime.prototype.getAll = function(cb){
       cb(true);
       return;                
     }
-    result.forEach((e) => {items.push(e.username,e.part_id,e.part_date,e.part_name,e.part_price,e.part_worktime,e.part_addr,e.part_content);});
+    result.forEach((e) => {items.push(e.username,e.part_id,e.part_date,e.part_name,e.part_price,e.part_worktime,e.part_addr,e.part_content,e.part_head);});
     cb(false,result);
   });
 };

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>蚂蚁寻物</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="assets/css/form-elements.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+        <!-- <link rel="shortcut icon" href="./assets/ico/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="./assets/ico/apple-touch-icon-57-precomposed.png"> -->
+
+    </head>
+
+    <body>
+
+        <!-- Top content -->
+        <div class="top-content">
+        	
+            <div class="inner-bg" style="background-image:url(../public/assets/img/backgrounds/1.jpg)">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                            <h1><strong>蚂蚁寻物</strong> 后台登录页面</h1>
+                            <div class="description">
+                            	<p>
+	                            	这里是蚂蚁寻物后台登录界面
+                            	</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                        	<div class="form-top">
+                        		<div class="form-top-left">
+                        			<h3>登录账号</h3>
+                            		<p>输入用户名和密码来登录账号</p>
+                        		</div>
+                        		<div class="form-top-right">
+                        			<i class="fa fa-key"></i>
+                        		</div>
+                            </div>
+                            <div class="form-bottom">
+			                    <form role="form" action="" method="post" class="login-form">
+			                    	<div class="form-group">
+			                    		<label for="form-tel">手机号</label>
+			                        	<input type="text" name="form-tel" placeholder="手机号..." class="form-username form-control" id="tel">
+			                        </div>
+			                        <div class="form-group">
+			                        	<label for="form-password">密码</label>
+                                        <input type="password" name="form-password" placeholder="密码..." class="form-password form-control" id="password">
+                                        <span id="missAll"></span>
+			                        </div>
+			                        <button type="submit" class="btn"  id="goto">登录账号</button>
+			                    </form>
+                            </div>
+                            <div><p></p>
+                                <a href="/zhuce">没有账号？立即注册</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+
+        <!-- Javascript -->
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
+        
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+        <script>
+            // $(document).ready(function () {
+            //     $('#dataTables-example').dataTable();
+            // });
+            //确定提交数据
+            $('#goto').click(function(){
+                //获取input框里
+                var tel = $('#tel').val();
+                var password = $('#password').val();
+                console.log(password);
+                var obj = {tel:tel};
+                var obj1 = JSON.stringify(obj);
+                // console.log(obj1);
+                fetch('http://192.168.179.144:3000/',{
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    body:'item=' + obj1
+                }).then(function(res){
+                    res.text().then(function(txt){
+                        console.log(password);
+                        // txt=JSON.parse(txt);
+                        console.log(txt);
+                        var txt1 = JSON.parse(txt);
+                        if(txt == '[]'){
+                            document.getElementById('missAll').innerHTML = '请输入账号和密码！';
+                        }else if(txt1[0].password !== password){
+                            document.getElementById('missAll').innerHTML = '请输入正确账号和密码！';
+                        }else{
+                            window.open("/index1",'_self');
+                        }
+
+                        // if(JSON.stringify(txt)=='[]'){
+                        //     document.getElementById('missAll').innerHTML = '请输入账号和密码！';
+                        // }
+                        // else if(txt[0].password !== password){
+                        //     // window.location.href('/index1');
+                        //     // console.log('正确');
+                        //     console.log(txt[0].password);
+                        //     document.getElementById('missAll').innerHTML = '请输入正确账号和密码！';
+                        // }
+                        // else{
+                        //    window.open("/index1");
+                        //    // console.log(txt[0].password);//密码的正确请求方式
+                        //     //console.log('cuole');
+                        // }
+                    });
+                });
+            });
+                
+        </script>    
+    </body>
+
+</html>

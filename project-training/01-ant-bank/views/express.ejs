@@ -316,6 +316,7 @@
                                             <th>代取发帖名称</th>
                                             <th>代取地点</th>
                                             <th>详细描述</th>
+                                            <th>头像</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
@@ -327,7 +328,8 @@
                                                 <td><%= items[item].take_time %></td>  
                                                 <td><%= items[item].take_name %></td>  
                                                 <td><%= items[item].take_place %></td>  
-                                                <td><%= items[item].take_content %></td>  
+                                                <td><%= items[item].take_content %></td>
+                                                <td><%= items[item].take_head %></td>    
                                                 <td>
                                                     <button onclick="del('<%= items[item].take_id %>')">删除</button>
                                                     <button>修改</button>

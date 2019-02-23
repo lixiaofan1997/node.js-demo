@@ -11,15 +11,15 @@ exp.prototype.getAll = function(cb){
       cb(true);
       return;                
     }
-    result.forEach((e) => {items.push(e.take_id,e.username,e.take_time,e.take_name,e.take_place,e.take_content);});
+    result.forEach((e) => {items.push(e.take_id,e.username,e.take_time,e.take_name,e.take_place,e.take_content,e.take_head);});
     cb(false,result);
   });
 };
 
 /*增*/
 exp.prototype.addItem = function(e,cb){
-  const sql = 'INSERT INTO delivery VALUES(?,?,?,?,?,?)';
-  db.query(sql,[e.take_id,e.username,e.take_time,e.take_name,e.take_place,e.take_content],function(err,result){
+  const sql = 'INSERT INTO delivery VALUES(?,?,?,?,?,?,?)';
+  db.query(sql,[e.take_id,e.username,e.take_time,e.take_name,e.take_place,e.take_content,e.take_head],function(err,result){
     if(err){
       cb(true);
       return;
